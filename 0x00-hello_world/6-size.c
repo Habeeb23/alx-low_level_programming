@@ -1,6 +1,6 @@
 #include <stdio.h>
 /**
- * main - Prints the size of many var type
+ * main - Entry
  *
  * Return: Always 0
  */
