@@ -1,23 +1,23 @@
-void reset_to_98(int *n);
+#include "main.h"
 
-void swap_int(int *a, int *b);
 
-int _strlen(char *s);
 
-void _puts(char *str);
+/**
+ *
+ *  * reset_to_98 - function that takes a pointer to an integer parameter
+ *
+ *   * @n: integer pointer
+ *
+ *    * Return: 0 Success
+ *
+ *     */
 
-void print_rev(char *s);
 
-void rev_string(char *s);
 
-void puts2(char *str);
+void reset_to_98(int *n)
 
-void puts_half(char *str);
+{
 
-void _putchar(char);
+		*n = 98;
 
-void print_array(int *a, int n);
-
-char *_strcpy(char *dest, char *src);
-
-int _atoi(char *s);
+}
