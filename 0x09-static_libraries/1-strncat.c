@@ -1,34 +1,27 @@
 #include "main.h"
-
 /**
- * _atoi - converts a string to an integer.
- * @s: input string.
- * Return: integer.
+ * _strncat - concatenates two strings,
+ * @dest: destination.
+ * @src: source.
+ * @n: amount of bytes used from src.
+ * Return: the pointer to dest.
  */
-int _atoi(char *s)
+char *_strncat(char *dest, char *src, int n)
 {
-	unsigned int count = 0, size = 0, oi = 0, pn = 1, m = 1, i;
+	int count = 0, count2 = 0;
 
-	while (*(s + count) != '\0')
+	while (*(dest + count) != '\0')
 	{
-		if (size > 0 && (*(s + count) < '0' || *(s + count) > '9'))
-			break;
-		if (*(s + count) == '-')
-			pn *= -1;
-
-		if ((*(s + count) >= '0') && (*(s + count) <= '9'))
-		{
-			if (size > 0)
-				m *= 10;
-			size++;
-		}
 		count++;
 	}
 
-	for (i = count - size; i < count; i++)
+	while (count2 < n)
 	{
-		oi = oi + ((*(s + i) - 48) * m);
-		m /= 10;
+		*(dest + count) = *(src + count2);
+		if (*(src + count2) == '\0')
+			break;
+		count++;
+		count2++;
 	}
-	return (oi * pn);
+	return (dest);
 }
