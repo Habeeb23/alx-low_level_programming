@@ -1,51 +1,45 @@
 #include "lists.h"
 
-
-
 /**
+ * insert_nodeint_at_index - Inserts a new node to a listint_t
+ *                           list at a given position.
+ * @head: A pointer to the address of the
+ *        head of the listint_t list.
+ * @idx: The index of the listint_t list where the new
+ *       node should be added - indices start at 0.
+ * @n: The integer for the new node to contain.
  *
- *  * pop_listint - Deletes the head node of a listint_t list.
- *
- *   * @head: A pointer to the address of the
- *
- *    *        head of the listint_t list.
- *
- *     *
- *
- *      * Return: If the linked list is empty - 0.
- *
- *       *         Otherwise - The head node's data (n).
- *
- *        */
-
-int pop_listint(listint_t **head)
-
+ * Return: If the function fails - NULL.
+ *         Otherwise - the address of the new node.
+ */
+listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 {
+	listint_t *new, *copy = *head;
+	unsigned int node;
 
-		listint_t *tmp;
+	new = malloc(sizeof(listint_t));
+	if (new == NULL)
+		return (NULL);
 
-			int ret;
+	new->n = n;
 
+	if (idx == 0)
+	{
+		new->next = copy;
+		*head = new;
+		return (new);
+	}
 
+	for (node = 0; node < (idx - 1); node++)
+	{
+		if (copy == NULL || copy->next == NULL)
+			return (NULL);
 
-				if (*head == NULL)
+		copy = copy->next;
+	}
 
-							return (0);
+	new->next = copy->next;
+	copy->next = new;
 
-
-
-					tmp = *head;
-
-						ret = (*head)->n;
-
-							*head = (*head)->next;
-
-
-
-								free(tmp);
-
-
-
-									return (ret);
-
+	return (new);
 }
