@@ -1,60 +1,41 @@
-nclude "lists.h"
-
-
+#include "lists.h"
 
 /**
+ * find_listint_loop - Finds the loop contained in
+ *                     a listint_t linked list.
+ * @head: A pointer to the head of the listint_t list.
  *
- *  * reverse_listint - Reverses a listint_t list.
- *
- *   * @head: A pointer to the address of
- *
- *    *        the head of the list_t list.
- *
- *     *
- *
- *      * Return: A pointer to the first node of the reversed list.
- *
- *       */
-
-listint_t *reverse_listint(listint_t **head)
-
+ * Return: If there is no loop - NULL.
+ *         Otherwise - the address of the node where the loop starts.
+ */
+listint_t *find_listint_loop(listint_t *head)
 {
+	listint_t *tortoise, *hare;
 
-		listint_t *ahead, *behind;
+	if (head == NULL || head->next == NULL)
+		return (NULL);
 
+	tortoise = head->next;
+	hare = (head->next)->next;
 
+	while (hare)
+	{
+		if (tortoise == hare)
+		{
+			tortoise = head;
 
-			if (head == NULL || *head == NULL)
+			while (tortoise != hare)
+			{
+				tortoise = tortoise->next;
+				hare = hare->next;
+			}
 
-						return (NULL);
+			return (tortoise);
+		}
 
+		tortoise = tortoise->next;
+		hare = (hare->next)->next;
+	}
 
-
-				behind = NULL;
-
-
-
-					while ((*head)->next != NULL)
-
-							{
-
-										ahead = (*head)->next;
-
-												(*head)->next = behind;
-
-														behind = *head;
-
-																*head = ahead;
-
-																	}
-
-
-
-						(*head)->next = behind;
-
-
-
-							return (*head);
-
+	return (NULL);
 }
-
