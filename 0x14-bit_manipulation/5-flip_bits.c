@@ -1,73 +1,22 @@
 #include "main.h"
 
-
-
 /**
+ * flip_bits - Counts the number of bits needed to be
+ *             flipped to get from one number to another.
+ * @n: The number.
+ * @m: The number to flip n to.
  *
- *  * binary_to_uint - converts a binary number to an
- *
- *   * unsigned int.
- *
- *    * @b: binary.
- *
- *     *
- *
- *      * Return: unsigned int.
- *
- *       */
-
-unsigned int binary_to_uint(const char *b)
-
+ * Return: The necessary number of bits to flip to get from n to m.
+ */
+unsigned int flip_bits(unsigned long int n, unsigned long int m)
 {
+	unsigned long int xor = n ^ m, bits = 0;
 
-		unsigned int ui;
+	while (xor > 0)
+	{
+		bits += (xor & 1);
+		xor >>= 1;
+	}
 
-			int len, base_two;
-
-
-
-				if (!b)
-
-							return (0);
-
-
-
-					ui = 0;
-
-
-
-						for (len = 0; b[len] != '\0'; len++)
-
-									;
-
-
-
-							for (len--, base_two = 1; len >= 0; len--, base_two *= 2)
-
-									{
-
-												if (b[len] != '0' && b[len] != '1')
-
-															{
-
-																			return (0);
-
-																					}
-
-
-
-														if (b[len] & 1)
-
-																	{
-
-																					ui += base_two;
-
-																							}
-
-															}
-
-
-
-								return (ui);
-
+	return (bits);
 }
