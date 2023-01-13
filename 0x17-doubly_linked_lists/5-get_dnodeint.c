@@ -1,41 +1,21 @@
 #include "lists.h"
 
-
-
 /**
+ * get_dnodeint_at_index - Locates a node in a dlistint_t list.
+ * @head: The head of the dlistint_t list.
+ * @index: The node to locate.
  *
- *  * print_dlistint - Prints all the elements of a dlistint_t list.
- *
- *   * @h: The head of the dlistint_t list.
- *
- *    *
- *
- *     * Return: The number of nodes in the list.
- *
- *      */
+ * Return: If the node does not exist - NULL.
+ *         Otherwise - the address of the located node.
+ */
 
-
-
-size_t print_dlistint(const dlistint_t *h)
-
+dlistint_t *get_dnodeint_at_index(dlistint_t *head, unsigned int index)
 {
-
-		size_t nodes = 0;
-
-
-
-			while (h)
-
-					{
-
-								nodes++;
-
-										printf("%d\n", h->n);
-
-												h = h->next;
-
-													}
-
-				return (nodes);
-
-}`
+	for (; index != 0; index--)
+	{
+		if (head == NULL)
+			return (NULL);
+		head = head->next;
+	}
+	return (head);
+}
